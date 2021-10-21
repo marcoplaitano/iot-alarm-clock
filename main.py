@@ -48,6 +48,10 @@ def start_wifi():
 
 def show_info(minutes):
     """Show current time and time to next alarm on display."""
+    if alarm.is_day_off(CURRENT_TIME):
+        display.show([CURRENT_TIME, "Day off"])
+        return
+
     h = int(minutes/60)
     m = minutes - h * 60
     t = _timedata.Time(hour=h, minutes=m)
